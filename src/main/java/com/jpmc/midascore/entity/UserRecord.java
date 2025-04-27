@@ -6,38 +6,40 @@ import jakarta.persistence.*;
 public class UserRecord {
 
     @Id
-    @GeneratedValue()
-    private long id;
+    @GeneratedValue
+    private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
+    private String username;
     private float balance;
 
-    protected UserRecord() {
-    }
+    public UserRecord() {}
 
-    public UserRecord(String name, float balance) {
-        this.name = name;
+    public UserRecord(Long id, String username, float balance) {
+        this.id = id;
+        this.username = username;
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return String.format("User[id=%d, name='%s', balance='%f'", id, name, balance);
+    // 🔥 Agrega ESTE nuevo constructor
+    public UserRecord(String username, float balance) {
+        this.username = username;
+        this.balance = balance;
     }
-
+    // Getters y setters...
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public float getBalance() {
         return balance;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setBalance(float balance) {
